@@ -56,8 +56,11 @@ router.post('/post',[
     check('ciudad', 'La ciudad es obligatorio!').not().isEmpty(),
    
 
-    check('telefono', 'El telefono es obligatorio!').not().isEmpty(),
-    check('telefono','el telefono debe de tener maximo 14 caracteres').isLength({ max: 14}),
+    check('telefonoCo', 'El telefono es obligatorio!').not().isEmpty(),
+    check('telefonoCo','el telefono debe de tener maximo 14 caracteres').isLength({ max: 14}),
+
+    check('celular', 'El telefono es obligatorio!').not().isEmpty(),
+    check('celular','el telefono debe de tener maximo 14 caracteres').isLength({ max: 14}),
 
     check('email', 'El correo no es válido').isEmail(),
     check('email').custom( helpersUsuarios.existeEmail ),

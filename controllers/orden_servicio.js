@@ -40,7 +40,7 @@ const Putresultado = async (req, res) => {
 
 const servicioPut = async (req, res) => {  //modificar  
     const { id } = req.params;  
-    const { _id, createdAt, ...resto } = req.body;
+    const { _id, createdAt, idMuestra,estado, ...resto } = req.body;
     const modificar = await Servicio.findByIdAndUpdate(id, resto);
     
     

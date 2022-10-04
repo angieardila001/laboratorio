@@ -9,7 +9,7 @@ const router=new Router()
 
 router.get('/', consecutivoGet) //listar todos
 router.post('/post',[
-    validarJWT,
+  
    
     validarCampos
 ], Post)

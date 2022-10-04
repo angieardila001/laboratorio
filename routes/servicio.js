@@ -63,7 +63,7 @@ router.post('/post',[
   
 
 
-    check('idContacto').custom( helpersUsuarios.existeUsuarioById),
+   
 
     check('entregaResultados', 'El entregaResultados es obligatorio!').not().isEmpty(),
 
@@ -84,7 +84,7 @@ router.post('/post',[
     check('descuento', 'el descuento debe tener maximo 30 caracteres').isLength({ max: 30}),
 
  
-    check('iva').custom( helpersSetup.existeSetupById),
+   
 
     check('items', 'ingrese el id').not().isEmpty(),
     check('items').custom(helpersServicio.validarMongoID),
