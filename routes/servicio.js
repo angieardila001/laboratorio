@@ -59,7 +59,7 @@ router.post('/post',[
 
     check('idcliente').custom( helpersUsuarios.existeUsuarioById),
 
-    check('idContacto').custom( helpersUsuarios.existeUsuarioById),
+    
 
     check('entregaResultados', 'El entrega de resultados es obligatorio!').not().isEmpty(),
 
