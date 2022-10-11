@@ -15,7 +15,7 @@ router.get(
     [
       //buscar por metodo
       validarJWT,
-      check("estadoMuestra", "El estado de muestra es obligatorio!").not().isEmpty(),
+      check("estadoMuestra", "ingrese el estado de muestra !").not().isEmpty(),
       check("estadoMuestra").isLength({ max: 30 }),
       validarCampos,
     ],
@@ -24,17 +24,16 @@ router.get(
 
 router.put('/a/:id',[
   validarJWT,
-  check('id','ingresa el id').not().isEmpty(),
+  check('id','Verifique que el usuario sea correcto').not().isEmpty(),
 
   validarCampos
 ],Putresultado)
 
 router.put('/modificar/:id',[
   validarJWT,
-  check('id','ingresa el id').not().isEmpty(),
+  check('id','Verifique que el usuario sea correcto').not().isEmpty(),
   check('id').custom(ordenSe.existeOrdenById),
   validarCampos
 ],servicioPut)
-
 
 export default router;

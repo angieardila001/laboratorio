@@ -14,78 +14,73 @@ router.get('/', muestraGet) //listar todos
 
 router.get('/id/:_id',[
     validarJWT,
-    check('_id', 'ingrese el id').not().isEmpty(),
+    check('_id', 'Ingrese la muestra').not().isEmpty(),
     check('_id').custom( helpersMuestras.existeMuestraById ),
     validarCampos
 ],
 idmuestraGet) //buscar por id
 router.get('/codmuestra/:codMuestra',[
     validarJWT,
-    check('codMuestra', 'el codMuestra es obligatorio').not().isEmpty(),
-    check('codMuestra', 'el codMuestra debe tener maximo 25 caracteres').isLength({ max: 25}),
+    check('codMuestra', 'Ingrese el código de la muestra').not().isEmpty(),
+    check('codMuestra', 'El código Muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos
 ],
 Getcodigo)  //buscar por codigo de muestra
 
 router.get('/ciudad/:id',[
     validarJWT,
-    check('id', 'ingrese el id').not().isEmpty(),
+    check('id', 'ingrese la ciudad').not().isEmpty(),
     check('id').custom( helpersCiudades.existeCiudadById),
     
     validarCampos
 ],
-Getciudad)  //buscar por rol
+Getciudad)  //buscar por ciudad
 
 router.get('/tipomuestra/:id',[
     validarJWT,
-    check('id', 'el tipoMuestra es obligatorio').not().isEmpty(),
+    check('id', 'Ingrese el tipo Muestra ').not().isEmpty(),
 
     validarCampos
 ],
-GetTipo)  //buscar por nombre
+GetTipo)  //buscar por tipo de muestra
 
 
 
 
 router.post('/post',[
-    validarJWT,
+      
     check('solicitante', 'El solicitante es obligatorio!').not().isEmpty(),
     check('solicitante').custom( usuario. existeUsuarioById ),
-
     
-    check('numRecoleccion', 'El numRecoleccion  es obligatorio!').not().isEmpty(),
+    check('numRecoleccion', 'El número recolección  es obligatorio!').not().isEmpty(),
     check('numRecoleccion').custom( helpersCiudades.existeCiudadById),
 
-    check('direccionTomaMuestra', 'El direccionTomaMuestra es obligatorio!').not().isEmpty(),
-    check('direccionTomaMuestra', 'el direccionTomaMuestra debe tener maximo 30 caracteres').isLength({ max: 30}),
+    check('direccionTomaMuestra', 'La  dirección de la toma muestra es obligatoria!').not().isEmpty(),
+    check('direccionTomaMuestra', 'La  dirección de la toma muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
 
-    check('lugarTomaMuestra', 'El lugarTomaMuestra es obligatorio!').not().isEmpty(),
-    check('lugarTomaMuestra', 'el lugarTomaMuestra debe tener maximo 30 caracteres').isLength({ max: 30}),
+    check('lugarTomaMuestra', 'El lugar toma de la muestra es obligatorio!').not().isEmpty(),
+    check('lugarTomaMuestra', 'El lugar toma de la muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
 
-    check('muestraRecolectadaPor', 'El muestraRecolectadaPor es obligatorio!').not().isEmpty(),
-    check('muestraRecolectadaPor', 'el muestraRecolectadaPor debe tener maximo 30 caracteres').isLength({ max: 30}),
+    check('muestraRecolectadaPor', 'La muestra recolectada por es obligatoria!').not().isEmpty(),
+    check('muestraRecolectadaPor', 'La muestra recolectada por debe tener máximo 30 caracteres').isLength({ max: 30}),
 
-    check('procedimientoMuestreo', 'El procedimientoMuestreo es obligatorio!').not().isEmpty(),
-    check('procedimientoMuestreo', 'el procedimientoMuestreo debe tener maximo 30 caracteres').isLength({ max: 30}),
+    check('procedimientoMuestreo', 'El procedimiento del muestreo es obligatorio!').not().isEmpty(),
+    check('procedimientoMuestreo', 'El procedimiento del Muestreo debe tener máximo 30 caracteres').isLength({ max: 30}),
 
-    check('tipoMuestra', 'El tipoMuestra es obligatorio!').not().isEmpty(),
+    check('tipoMuestra', 'El tipo muestra es obligatorio!').not().isEmpty(),
     check('tipoMuestra').custom( tipo.existetipoMuestraById),
 
-    check('fechaRecoleccion', 'El fechaRecoleccion es obligatorio!').not().isEmpty(),
-    check('fechaRecoleccion', 'el fechaRecoleccion debe tener maximo 30 caracteres').isLength({ max: 30}),
+    check('fechaRecoleccion', 'la fecha de recolección es obligatoria!').not().isEmpty(),
+    check('fechaRecoleccion', 'la fecha de recolección debe tener máximo 30 caracteres').isLength({ max: 30}),
 
     check('cotizacion', 'La cotización es obligatoria!').not().isEmpty(),
 
-
-
-       
-    check('estado', 'el estado debe tener maximo 30 caracteres').isLength({ max: 30}),
     validarCampos       
 ], muestraPost) //añadir
 
 router.put('/modificar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','Ingresa la muestra a modificar').not().isEmpty(),
     check('id').custom( helpersMuestras.existeMuestraById ),
     validarCampos
 ],modificaPut)
@@ -93,14 +88,14 @@ router.put('/modificar/:id',[
 
 router.put('/activar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','Ingresa la muestra activar').not().isEmpty(),
     check('id').custom( helpersMuestras.existeMuestraById ),
     validarCampos
 ],PutActivate)
 
 router.put('/desactivar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','Ingresa la muestra inactiva').not().isEmpty(),
     check('id').custom( helpersMuestras.existeMuestraById ),
     validarCampos
 ],PutDeActivate)

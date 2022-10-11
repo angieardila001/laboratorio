@@ -11,15 +11,15 @@ router.get('/', ensayoGet) //listar todos
 
 router.get('/id/:_id',[
     validarJWT,
-    check('_id', 'ingrese el id').not().isEmpty(),
+    check('_id', 'Verifique que el usuario sea correcto').not().isEmpty(),
     check('_id').custom( helpersEnsayos.existeEnsayoById ),
     validarCampos
 ],
 idensayoGet) //buscar por id
 router.get('/tipo/:tipo_ensayo',[
     validarJWT,
-    check('tipo_ensayo', 'el tipo_ensayo es obligatorio').not().isEmpty(),
-    check('tipo_ensayo', 'el tipo_ensayo debe tener maximo 25 caracteres').isLength({ max: 25}),
+    check('tipo_ensayo', 'El tipo ensayo es obligatorio').not().isEmpty(),
+    check('tipo_ensayo', 'El tipo ensayo debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos
 ],
 GetTipo)  //buscar por tipo ensayo
@@ -27,31 +27,28 @@ GetTipo)  //buscar por tipo ensayo
 
 router.post('/post',[
       
-    check('tipo_ensayo', 'El tipo_ensayo es obligatorio!').not().isEmpty(),
-    check('tipo_ensayo', 'el tipo_ensayo debe tener maximo 25 caracteres').isLength({ max: 25}),
+    check('tipo_ensayo', 'El tipo ensayo es obligatorio!').not().isEmpty(),
+    check('tipo_ensayo', 'El tipo ensayo debe tener máximo 25 caracteres').isLength({ max: 25}),
     check('tipo_ensayo').custom( helpersEnsayos.existe),
 
     check('metodo', 'El metodo es obligatorio!').not().isEmpty(),
     check('metodo', 'El metodo debe tener 25 caracteres').isLength({ max: 25}),
 
-    check('valorMinimo', 'La valorMinimo debe tener 50 caracteres').isLength({ max: 50}),
+    check('valorMinimo', 'El valor Mínimo debe tener 50 caracteres').isLength({ max: 50}),
 
 
-    check('valorMaximo','el valorMaximo debe de tener maximo 14 caracteres').isLength({ max: 14}),
+    check('valorMaximo','El valor Máximo debe de tener máximo 14 caracteres').isLength({ max: 14}),
 
 
     check('unidades', 'unidades no es válido').isLength({ max: 25}),
    
-    check('costo', 'El metodo debe tener 25 caracteres').isLength({ max: 25}),
-
-
-    check('descripcion', 'El descripcion debe tener minimo 10 caracteres').isLength({ min: 10}),
+    check('descripcion', 'La descripción debe tener mínimo 10 caracteres').isLength({ min: 10}),
     validarCampos       
 ], ensayoPost) //añadir
 
 router.post('/modificar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','ingrese el ensayo a modificar ').not().isEmpty(),
     check('id').custom( helpersEnsayos.existeEnsayoById),
 
     validarCampos
@@ -59,7 +56,7 @@ router.post('/modificar/:id',[
 
 router.put('/activo/:id',[
     validarJWT,
-    check('id', 'ingrese el id').not().isEmpty(),
+    check('id', 'Ingrese el ensayo activar').not().isEmpty(),
     check('id').custom( helpersEnsayos.existeEnsayoById ),
     validarCampos
 
@@ -67,11 +64,10 @@ router.put('/activo/:id',[
 
 router.put('/inactivo/:id',[
     validarJWT,
-    check('id', 'ingrese el id').not().isEmpty(),
+    check('id', 'Ingrese el enseyo inactiva').not().isEmpty(),
     check('id').custom( helpersEnsayos.existeEnsayoById ),
     validarCampos
 ],ensayoPutDeActivate)
-
 
 
 export default router

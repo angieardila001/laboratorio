@@ -9,21 +9,20 @@ const router=new Router()
 
 router.get('/', consecutivoGet) //listar todos
 router.post('/post',[
-  
+    validarJWT,
    
     validarCampos
 ], Post)
 router.put('/modificar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','Ingresa el consecuitivo a modificar ').not().isEmpty(),
     check('id').custom(setup.existeSetupById ),
 
-    check("consecutivoMuestra","por favor ingresa el consecutivo muestra").not().isEmpty(),
-    check("consecutivoOferta","por favor ingresa el consecutivo oferta").not().isEmpty(),
-    check("consecutivoResultados","por favor ingresa el consecutivo resultados").not().isEmpty(),
-    check("iva","por favor ingresa el iva").not().isEmpty(),
+    check("consecutivoMuestra","Por favor ingresa el consecutivo muestra").not().isEmpty(),
+    check("consecutivoOferta","Por favor ingresa el consecutivo oferta").not().isEmpty(),
+    check("consecutivoResultados","Por favor ingresa el consecutivo resultados").not().isEmpty(),
+    check("iva","Por favor ingresa el iva").not().isEmpty(),
     validarCampos
 ],consecutivoPut)
-
 
 export default router

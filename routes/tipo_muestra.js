@@ -11,7 +11,7 @@ router.get('/', tipoGet) //listar todos
 
 router.get('/id/:id',[
     validarJWT,
-    check('id', 'ingrese el id').not().isEmpty(),
+    check('id', 'Ingrese el tipo de muestra').not().isEmpty(),
     check('id').custom( helpersTipo_muestra.existetipoMuestraById ),
     validarCampos
 ],
@@ -20,8 +20,8 @@ idtipoGet) //buscar por id
 
 router.get('/tipomuestra',[
     validarJWT,
-    check('tipos', 'el tipoMuestra es obligatorio').not().isEmpty(),
-    check('tipos', 'el tipoMuestra debe tener maximo 25 caracteres').isLength({ max: 25}),
+    check('tipos', 'El tipo dde muestra es obligatorio!').not().isEmpty(),
+    check('tipos', 'El tipo de muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos
 ],
 GetTipos)  //buscar por nombre
@@ -30,13 +30,13 @@ GetTipos)  //buscar por nombre
 router.post('/post',[
     validarJWT,
     check('tipos', 'El tipo de muestra es obligatorio!').not().isEmpty(),
-    check('tipos', 'el tipo de muestra debe tener maximo 25 caracteres').isLength({ max: 25}),
+    check('tipos', 'El tipo de muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos       
 ], tipoPost) //añadir
 
 router.put('/modificar/:id',[
     validarJWT,
-    check('id','ingresa el id').not().isEmpty(),
+    check('id','Ingresa el tipo de muestra a modificar').not().isEmpty(),
     check('id').custom( helpersTipo_muestra.existetipoMuestraById ),
     validarCampos
 ],tipoPut)
