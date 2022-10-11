@@ -18,10 +18,7 @@ router.put('/modificar/:id',[
     check('id','Ingresa el consecuitivo a modificar ').not().isEmpty(),
     check('id').custom(setup.existeSetupById ),
 
-    check("consecutivoMuestra","Por favor ingresa el consecutivo muestra").not().isEmpty(),
-    check("consecutivoOferta","Por favor ingresa el consecutivo oferta").not().isEmpty(),
-    check("consecutivoResultados","Por favor ingresa el consecutivo resultados").not().isEmpty(),
-    check("iva","Por favor ingresa el iva").not().isEmpty(),
+    
     validarCampos
 ],consecutivoPut)
 
