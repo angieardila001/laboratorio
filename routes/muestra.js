@@ -3,6 +3,7 @@ import {Getcodigo,Getciudad,muestraGet,idmuestraGet,GetTipo,muestraPost,modifica
 import {validarCampos} from "../middleware/middleware.js"
 import helpersMuestras from "../helper/muestra.js"
 import helpersCiudades from "../helper/ciudad.js"
+import servicio from "../helper/servicio.js"
 import usuario  from "../helper/usuario.js"
 import tipo from "../helper/tipo_muestra.js"
 import { check } from "express-validator"
@@ -56,7 +57,7 @@ router.post('/post',[
     check('numRecoleccion').custom( helpersCiudades.existeCiudadById),
 
     check('direccionTomaMuestra', 'La  dirección de la toma muestra es obligatoria!').not().isEmpty(),
-    check('direccionTomaMuestra', 'La  dirección de la toma muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
+    check('direccionTomaMuestra').custom( helpersCiudades.existeCiudadById),
 
     check('lugarTomaMuestra', 'El lugar toma de la muestra es obligatorio!').not().isEmpty(),
     check('lugarTomaMuestra', 'El lugar toma de la muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
@@ -74,6 +75,7 @@ router.post('/post',[
     check('fechaRecoleccion', 'la fecha de recolección debe tener máximo 30 caracteres').isLength({ max: 30}),
 
     check('cotizacion', 'La cotización es obligatoria!').not().isEmpty(),
+    check('cotizacion').custom( servicio.existeServicioById),
 
     validarCampos       
 ], muestraPost) //añadir
