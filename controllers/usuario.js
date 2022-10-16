@@ -18,6 +18,7 @@ const idusuarioGet= async(req,res)=>{ //buscar por id
     })
 }
 
+
 const GetNombre= async(req,res)=>{  //buscar por titulo
   const {nombre}=req.params
   const usuarios=await Usuario.find(
