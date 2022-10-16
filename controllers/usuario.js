@@ -11,7 +11,7 @@ const usuarioGet= async(req,res)=>{  //buscar todos
 }
 
 const idusuarioGet= async(req,res)=>{ //buscar por id
-    const{_id}=req.query
+    const{_id}=req.params
     const usuarios =await Usuario.findById({_id}).populate("ciudad")
     res.json({
         usuarios
