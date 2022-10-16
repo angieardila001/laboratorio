@@ -24,10 +24,10 @@ router.get('/rol',[
 ],
 GetRol)  //buscar por rol
 
-router.get('/id/:id',[
+router.get('/id/:_id',[
     validarJWT,
-    check('id', 'Ingrese el usuario').not().isEmpty(),
-    check('id').custom( helpersUsuarios.existeUsuarioById ),
+    check('_id', 'Ingrese el usuario').not().isEmpty(),
+    check('_id').custom( helpersUsuarios.existeUsuarioById ),
     validarCampos
 ],
 idusuarioGet) //buscar por id
