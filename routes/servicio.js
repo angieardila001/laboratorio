@@ -1,10 +1,8 @@
 import {Router} from "express"
-import {ServicioGet,Getmuestra,Getusuario,itemCotiGet,idservicioGet,estadoServicio,servicioPut,servicioPost} from "../controllers/servicio.js"
+import {ServicioGet,Getusuario,itemCotiGet,idservicioGet,estadoServicio,servicioPut,servicioPost} from "../controllers/servicio.js"
 import {validarCampos} from "../middleware/middleware.js"
 import { check } from "express-validator"
 import helpersUsuarios from "../helper/usuario.js"
-import helpersMuestras from "../helper/muestra.js"
-import helpersSetup from "../helper/setup.js"
 import helpersServicio from "../helper/servicio.js"
 import { validarJWT } from "../middleware/validartoken.js"
 
@@ -19,23 +17,18 @@ router.get('/id/:id',[
 ],
 idservicioGet) //buscar por id
 
-router.get('/item',[
+router.get('/item/',[
     validarJWT,
     check('item', 'Ingrese el item').not().isEmpty(),
+    check('id', 'Ingrese la cotización').not().isEmpty(),
+    check('id').custom( helpersServicio.existeServicioById ),
     validarCampos
 ],
 itemCotiGet)  //buscar por item
 
-router.get('/muestra',[
-    validarJWT,
-    check('idmuestra', 'Ingrese la muestra que sea correcta').not().isEmpty(),
-    check('idmuestra').custom( helpersMuestras.existeMuestraById),
-    
-    validarCampos
-],
-Getmuestra)  //buscar por muestra
+ 
 
-router.get('/usuario',[
+router.get('/usuario/:id',[
     validarJWT,
     check('id', 'Ingrese usuario que sea correcto').not().isEmpty(),
     check('id').custom( helpersUsuarios.existeUsuarioById),

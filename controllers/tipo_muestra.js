@@ -8,7 +8,7 @@ const tipoGet=async (req,res)=>{ //listar todos
 }
 
 const idtipoGet= async(req,res)=>{ //buscar por id
-  const{_id}=req.query
+  const{_id}=req.params
   const usuarios =await tipoMuestra.findById({_id})
   res.json({
       usuarios

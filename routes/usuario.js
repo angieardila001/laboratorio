@@ -17,7 +17,7 @@ router.get('/nombre',[
 ],
 GetNombre)  //buscar por nombre
 
-router.get('/rol',[
+router.get('/rol/:rol',[
     validarJWT,
     check('rol', 'El rol es obligatorio!!').not().isEmpty(),
     validarCampos

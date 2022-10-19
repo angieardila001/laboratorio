@@ -9,18 +9,18 @@ const router=new Router()
 
 router.get('/', tipoGet) //listar todos
 
-router.get('/id/:id',[
+router.get('/id/:_id',[
     validarJWT,
-    check('id', 'Ingrese el tipo de muestra').not().isEmpty(),
-    check('id').custom( helpersTipo_muestra.existetipoMuestraById ),
+    check('_id', 'Ingrese el tipo de muestra').not().isEmpty(),
+    check('_id').custom( helpersTipo_muestra.existetipoMuestraById ),
     validarCampos
 ],
 idtipoGet) //buscar por id
 
 
-router.get('/tipomuestra',[
+router.get('/tipomuestra/:tipos',[
     validarJWT,
-    check('tipos', 'El tipo dde muestra es obligatorio!').not().isEmpty(),
+    check('tipos', 'El tipo de muestra es obligatorio!').not().isEmpty(),
     check('tipos', 'El tipo de muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos
 ],
