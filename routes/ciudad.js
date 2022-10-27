@@ -25,10 +25,10 @@ router.get('/depa/:codigodedepartamento',[
 ],
 GetCodigoDepa)  //buscar por codigo de departamento
 
-router.get('/ciu/:ciudad',[
+router.get('/ciu/:departamento',[
     validarJWT,
-    check('ciudad', 'El código ciudad es obligatorio').not().isEmpty(),
-    check('ciudad', 'El código ciudad debe tener máximo 25 caracteres').isLength({ max: 25}),
+    check('departamento', 'El código ciudad es obligatorio').not().isEmpty(),
+    check('departamento', 'El código ciudad debe tener máximo 25 caracteres').isLength({ max: 25}),
     validarCampos
 ],
 GetCodigoCi)  //buscar por codigo de departamento
