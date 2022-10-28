@@ -48,8 +48,8 @@ const GetRol= async(req,res)=>{  //buscar por titulo
       res.json(`${rol} No encontrado`)
 }
 const usuarioPost=async(req,res)=>{ //añadir
-    const{nombre,documento,direccion,ciudad,contacto,telefonoCo,celular,email,rol,password}=req.body
-    const usuario= new Usuario({nombre,documento,direccion,ciudad,telefonoCo,celular,contacto,email,rol,password})
+    const{nombre,funcionario,documento,direccion,ciudad,contacto,telefonoCo,celular,email,rol,password}=req.body
+    const usuario= new Usuario({nombre,funcionario,documento,direccion,ciudad,telefonoCo,celular,contacto,email,rol,password})
     const salt= bcryptjs.genSaltSync(10)
     usuario.password=bcryptjs.hashSync(password,salt)
     usuario.save()

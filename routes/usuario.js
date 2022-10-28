@@ -48,6 +48,8 @@ router.post('/post',[
     check('documento', 'El documento es obligatorio!').not().isEmpty(),
     check('documento', 'El documento debe tener 25 caracteres').isLength({ max: 25}),
 
+    check('funcionario', 'El funcionario es obligatorio!').not().isEmpty(),
+    check('funcionario', 'El funcionario debe tener 25 caracteres').isLength({ max: 25}),
 
     check('direccion', 'La dirección es obligatorio!').not().isEmpty(),
     check('direccion', 'La dirección debe tener 50 caracteres').isLength({ max: 50}),

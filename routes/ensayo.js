@@ -9,6 +9,7 @@ const router=new Router()
 
 router.get('/', ensayoGet) //listar todos
 
+
 router.get('/id/:_id',[
     validarJWT,
     check('_id', 'Verifique que el usuario sea correcto').not().isEmpty(),
