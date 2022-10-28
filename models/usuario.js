@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const UsuarioSchema = new mongoose.Schema({
   tipopersona: { type: String, required: true, default: "Natural" },
   //Natural  Juridica
+  funcionario: { type: String, maxlength: 25 },
   nombre: { type: String, maxlength: 25, required: true },
   documento: { type: String, maxlength: 25, required: true },
   direccion: { type: String, maxlength: 25, required: true },
