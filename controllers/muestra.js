@@ -5,7 +5,7 @@ import Orden from "../models/orden_servicio.js"
 import Usuario from "../models/usuario.js"
 import Setup from "../models/setup.js"
 import Servicio from "../models/servicio.js"
-
+import enviar from "../database/mailer.js"
 const muestraGet=async (req,res)=>{ //listar todos
   const muestras= await Muestra.find().populate({path:"solicitante",populate:{path:"ciudad"}}).populate({path:"numRecoleccion"}).populate({path:"tipoMuestra"})
   
@@ -122,6 +122,13 @@ const muestraPost=async(req,res)=>{ //añadir
 
     orden.save();
     res.json({orden})
+    const email=await Usuario.findById(solicitante)
+    await enviar.sendMail({
+      from:'"muestra creada" <ardilablancoangieyuliana@gmail.com',
+      to:email.email,
+      subject:"La muestra fue creada exitosamente",
+      html:`El codigo de la muestra es : ${muestras.codMuestra}`
+    })
   }
 
 const modificaPut = async (req, res) => {   

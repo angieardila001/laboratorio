@@ -15,6 +15,7 @@ const UsuarioSchema = new mongoose.Schema({
   password: { type: String, milLength: 8 },
   rol: { type: String, maxlength: 25, required: true, default: "Natural" },
   estado: { type: Number, default: 1 }, //0 inactivo  1:activo   2:vacaciones
+  resetToken:{type: String, default: ""},
   createdAt: { type: Date, default: Date.now },
 });
 

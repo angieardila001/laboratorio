@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { usuarioGet,idusuarioGet,GetNombre,GetRol,usuarioPost,modificaDatos,UsuarioPutActivate,UsuarioPutDeActivate,usuarioLogin} from "../controllers/usuario.js"
+import {cambiar, recuperar,usuarioGet,idusuarioGet,GetNombre,GetRol,usuarioPost,modificaDatos,UsuarioPutActivate,UsuarioPutDeActivate,usuarioLogin} from "../controllers/usuario.js"
 import {validarCampos} from "../middleware/middleware.js"
 import helpersUsuarios from "../helper/usuario.js"
 import { check } from "express-validator"
@@ -39,7 +39,18 @@ router.post('/login',[
     check('password', 'Password no es válido').not().isEmpty(),
     validarCampos
 ], usuarioLogin )  // login
+router.put('/recuperar',[
+    
+    check('email', 'El correo no es válido').isEmail(),
 
+    validarCampos
+], recuperar )  // recuperar
+router.put('/cambiar',[
+    
+    
+
+    validarCampos
+], cambiar )  // login
 router.post('/post',[
       
     check('nombre', 'El nombre es obligatorio!').not().isEmpty(),

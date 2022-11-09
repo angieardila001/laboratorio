@@ -10,16 +10,16 @@ const helpersUsuarios={
         }
     },
 
-    existeEmail :() => {
-        return async (req, res, next) => {
-            const existe = await Usuario.findOne({ email: req.body.email });
+    existeEmail:async(email) => {
+        // return async (req, res, next) => { 
+            const existe = await Usuario.findOne({ email});
         
                 if (existe ) {
-                    return res.status(401).json({ msg: `El email ya está registrado` });
-                    //throw new Error(`El email ya está registrado`)
+                    //return res.status(401).json({ msg: `El email ya está registrado` });
+                    throw new Error(`El email ya está registrado`)
                 }
         
-        }
+        
     },
     
 
@@ -27,3 +27,8 @@ const helpersUsuarios={
 
 }
 export default helpersUsuarios
+
+
+   
+    
+
