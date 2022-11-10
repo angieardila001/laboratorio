@@ -47,7 +47,7 @@ const estadoServicio = async (req, res) => {   //listar por numcotizacion
   const servicios = await Servicio.find(
     {
       $or: [
-        { numCotizacion: new RegExp(numCotizacion, "i") },
+        { numCotizacion: new RegExp(`^${numCotizacion}`, "i") },
 
       ]
     }

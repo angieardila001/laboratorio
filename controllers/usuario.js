@@ -92,7 +92,7 @@ const recuperar = async (req, res) => {
     const { email } = req.body
     const message = 'Revisa tu correo electrónico '
     let verificationLink
-
+    try {
       const user = await Usuario.findOne({ email })
       //console.log('user: ' + user); 
 
@@ -114,10 +114,12 @@ const recuperar = async (req, res) => {
       } catch (error) {
         return res.status(500).json({ msg: "Error al ingresar la token" });
       }
-
+    } catch (error) {
+        return res.status(404).json({ msg: 'Hable con el WebMaster' })
+    }
     
 
-    
+    try {
       await enviar.sendMail({
         from: '"Recuperación de la contraseña" <ardilablancoangieyuliana@gmail.com>', // sender address
         to: email, // list of receivers
@@ -125,8 +127,14 @@ const recuperar = async (req, res) => {
         html: `Link: ${verificationLink}`, // html body
       });
     
-
+    } catch (error) {
+        return res.status(500).json({ msg: "No se pudo enviar correo de verificacion" });
+    }
     res.json({ msg: message })
+
+
+
+    
   }
 const usuarioLogin = async (req, res) => { // login
     const { email, password } = req.body;

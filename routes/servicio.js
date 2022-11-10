@@ -37,7 +37,7 @@ router.get('/usuario/:id',[
 ],
 Getusuario)  //buscar por usuario
 
-router.get('/coti',[
+router.get('/coti/:numCotizacion',[
     validarJWT,
     check('numCotizacion', 'Ingrese el número de Cotización').not().isEmpty(),
     validarCampos
