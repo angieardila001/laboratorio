@@ -54,6 +54,8 @@ router.put('/cambiar',[
 ], cambiar )  // login
 router.post('/post',[
       
+
+    
     check('nombre', 'El nombre es obligatorio!').not().isEmpty(),
     check('nombre', 'El nombre debe tener máximo 25 caracteres').isLength({ max: 25}),
 

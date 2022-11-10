@@ -5,7 +5,7 @@ const UsuarioSchema = new mongoose.Schema({
   //Natural  Juridica
   funcionario: { type: String, maxlength: 25 },
   nombre: { type: String, maxlength: 25, required: true },
-  documento: { type: String, maxlength: 25, required: true },
+  documento: { type: String, maxlength: 25, required: true , unique: true},
   direccion: { type: String, maxlength: 25, required: true },
   ciudad: { type: mongoose.Schema.ObjectId, ref: "Ciudad", required: true },
   contacto: { type: String, maxlength: 25 },
