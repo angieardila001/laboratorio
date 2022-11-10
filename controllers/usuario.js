@@ -39,7 +39,7 @@ const GetRol = async (req, res) => {  //buscar por titulo
     const usuarios = await Usuario.find(
         {
             $or: [
-                { rol: new RegExp(`^${rol}}`, "i") },
+                { rol: new RegExp(`^${rol}`, "i") },
             ]
         }
     )
