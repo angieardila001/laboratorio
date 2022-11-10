@@ -55,7 +55,7 @@ router.put('/cambiar',[
 router.post('/post',[
       
 
-    
+
     check('nombre', 'El nombre es obligatorio!').not().isEmpty(),
     check('nombre', 'El nombre debe tener máximo 25 caracteres').isLength({ max: 25}),
 
@@ -72,7 +72,7 @@ router.post('/post',[
    
 
     check('telefonoCo', 'El teléfono es obligatorio!').not().isEmpty(),
-    check('telefonoCo','El teléfono debe de tener máximo 14 caracteres').isLength({ max: 14}),
+    check('telefonoCo','El teléfono debe de tener máximo 14 caracteres').isLength({ min: 7}),
 
     check('celular', 'El celular es obligatorio!').not().isEmpty(),
     check('celular','El celular debe de tener máximo 14 caracteres').isLength({ max: 14}),
