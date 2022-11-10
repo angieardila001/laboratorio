@@ -25,7 +25,7 @@ const GetNombre = async (req, res) => {  //buscar por titulo
     const usuarios = await Usuario.find(
         {
             $or: [
-                { nombre: new RegExp(nombre, "i") },
+                { nombre: new RegExp(`^${nombre}`, "i") },
             ]
         }
     )
@@ -39,7 +39,7 @@ const GetRol = async (req, res) => {  //buscar por titulo
     const usuarios = await Usuario.find(
         {
             $or: [
-                { rol: new RegExp(rol, "i") },
+                { rol: new RegExp(`^${rol}}`, "i") },
             ]
         }
     )
@@ -169,11 +169,8 @@ const usuarioLogin = async (req, res) => { // login
 const cambiar =   async (req, res) => {
     const { nuevaPassword } = req.body;
     const resetToken = req.header('reset')
+console.log("hola",resetToken)
 
-    const { uid } = jwt.verify(resetToken, process.env.SECRETORPRIVATEKEY)
-
-    let usuario = await Usuario.findById(uid);
-    console.log(usuario)
       const verificar = jwt.verify(resetToken, process.env.CLAVERESETTOKEN)
       console.log(verificar.nombre);
       const user = await Usuario.findOne({ nombre: verificar.nombre })
