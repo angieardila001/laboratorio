@@ -56,5 +56,25 @@ const validarJWT = async (req, res, next) => {
     }
 }
 
+const validarResetJWT = async (req, res, next) =>{
+    const token = req.header("reset");
+    
+    if (!token) {
+        return res.status(401).json({
+            msg: "No hay token en la peticion"
+        })
+    }
+    
+        const tokenValidar = jwt.verify(token, process.env.CLAVERESETTOKEN)
+         
+        if(!tokenValidar){
+            return res.status(401).json({
+                msg: "No hay token en la peticion"
+            })
+        }
 
-export { generarJWT, validarJWT }
+        next();
+        
+   
+}
+export { generarJWT, validarJWT, validarResetJWT }

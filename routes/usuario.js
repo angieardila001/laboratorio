@@ -3,7 +3,7 @@ import {cambiar, recuperar,usuarioGet,idusuarioGet,GetNombre,GetRol,usuarioPost,
 import {validarCampos} from "../middleware/middleware.js"
 import helpersUsuarios from "../helper/usuario.js"
 import { check } from "express-validator"
-import { validarJWT } from "../middleware/validartoken.js"
+import { validarJWT , validarResetJWT } from "../middleware/validartoken.js"
 
 const router=new Router()
 
@@ -47,7 +47,7 @@ router.put('/recuperar',[
     validarCampos
 ], recuperar )  // recuperar
 router.put('/cambiar',[
-    
+    validarResetJWT,
     
 
     validarCampos

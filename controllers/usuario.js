@@ -96,7 +96,7 @@ const recuperar = async (req, res) => {
       const user = await Usuario.findOne({ email })
       //console.log('user: ' + user); 
 
-      const token = await generarJWT(Usuario.id);
+      const token = jwt.sign({idUsuario:user._id, nombre:user.nombre}, process.env.CLAVERESETTOKEN)
       //console.log("verificar" + token)
       verificationLink = `
       http://localhost:27017/api/usuario/cambiar`
@@ -172,8 +172,8 @@ const cambiar =   async (req, res) => {
 console.log("hola",resetToken)
 
       const verificar = jwt.verify(resetToken, process.env.CLAVERESETTOKEN)
-      console.log(verificar.nombre);
-      const user = await Usuario.findOne({ nombre: verificar.nombre })
+      console.log(verificar.idUsuario);
+      const user = await Usuario.findOne({ _id: verificar.idUsuario })
       console.log(user);
 
       if (!user) {
