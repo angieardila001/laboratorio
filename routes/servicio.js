@@ -9,10 +9,10 @@ import { validarJWT } from "../middleware/validartoken.js"
 const router=new Router()
 router.get("/", ServicioGet); //listar todos
 
-router.get('/id/:id',[
+router.get('/id/:_id',[
     validarJWT,
-    check('id', 'Ingrese la cotización').not().isEmpty(),
-    check('id').custom( helpersServicio.existeServicioById ),
+    check('_id', 'Ingrese la cotización').not().isEmpty(),
+    check('_id').custom( helpersServicio.existeServicioById ),
     validarCampos
 ],
 idservicioGet) //buscar por id
