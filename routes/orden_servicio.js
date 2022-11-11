@@ -22,7 +22,7 @@ router.get(
     estadoMuestra
 );//buscar por estado de muestra
 
-router.put('/a/:id',[
+router.put('midificar/:id',[
   validarJWT,
   check('id','Verifique que el usuario sea correcto').not().isEmpty(),
 

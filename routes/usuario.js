@@ -43,13 +43,13 @@ router.post('/login',[
 router.put('/recuperar',[
     
     check('email', 'El correo no es válido').isEmail(),
-
+    check('email').custom( helpersUsuarios.existeEmail ),
     validarCampos
 ], recuperar )  // recuperar
 router.put('/cambiar',[
     validarResetJWT,
     
-
+    check('nuevaPassword', 'Digite por favor la nueva contraseña!').not().isEmpty(),
     validarCampos
 ], cambiar )  // login
 router.post('/post',[
@@ -60,25 +60,26 @@ router.post('/post',[
     check('nombre', 'El nombre debe tener máximo 25 caracteres').isLength({ max: 25}),
 
     check('documento', 'El documento es obligatorio!').not().isEmpty(),
-    check('documento', 'El documento debe tener 25 caracteres').isLength({ max: 25}),
+    check('documento', 'El documento debe maximo tener 25 caracteres').isLength({ max: 25}),
 
     
     check('funcionario', 'El funcionario debe tener 25 caracteres').isLength({ max: 25}),
 
     check('direccion', 'La dirección es obligatorio!').not().isEmpty(),
-    check('direccion', 'La dirección debe tener 50 caracteres').isLength({ max: 50}),
+    check('direccion', 'La dirección debe maximo tener 50 caracteres').isLength({ max: 50}),
 
     check('ciudad', 'La ciudad es obligatoria!').not().isEmpty(),
    
 
     check('telefonoCo', 'El teléfono es obligatorio!').not().isEmpty(),
-    check('telefonoCo','El teléfono debe de tener máximo 14 caracteres').isLength({ min: 7}),
+    check('telefonoCo','El teléfono debe de tener minimo 7 caracteres').isLength({ min: 7}),
 
     check('celular', 'El celular es obligatorio!').not().isEmpty(),
-    check('celular','El celular debe de tener máximo 14 caracteres').isLength({ max: 14}),
+    check('celular','El celular debe de tener máximo 7 caracteres').isLength({ min: 7}),
 
     check('email', 'El correo no es válido').isEmail(),
     check('email').custom( helpersUsuarios.existeEmail ),
+    check('email','El correo debe de tener máximo 50 caracteres').isLength({ max: 50}),
 
     check('password', 'Llene el campo de contraseña').not().isEmpty(),
     check('password', 'Password no es válido').isLength({ min: 8}),

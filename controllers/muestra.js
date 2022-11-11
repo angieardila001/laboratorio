@@ -70,25 +70,25 @@ const GetTipo = async (req, res) => {  //buscar por tipo
 }
 
 const muestraPost = async (req, res) => { //añadir
+
+  const consecutivo = await Setup.findOne()
+  let conse = ""
+  if (consecutivo.consecutivoMuestra.toString().length == 1) conse = "000" + consecutivo.consecutivoMuestra
+  else if (consecutivo.consecutivoMuestra.toString().length == 2) conse = "00" + consecutivo.consecutivoMuestra
+  else if (consecutivo.consecutivoMuestra.toString().length == 3) conse = "0" + consecutivo.consecutivoMuestra
+  else conse = consecutivo.consecutivoOferta
+  const d = new Date()
+
+  const codMuestra = conse + "-" + d.getFullYear()
+  const consecutivoMuestra = consecutivo.consecutivoMuestra + 1
+  const guardar = await Setup.findByIdAndUpdate(consecutivo._id, { consecutivoMuestra: consecutivoMuestra })
+
+  const { solicitante, numRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item } = req.body
+  const resultado = await Servicio.find({ cotizacion }).populate(
+    "items"
+  );
+  console.log(resultado);
   try {
-    const consecutivo = await Setup.findOne()
-    let conse = ""
-    if (consecutivo.consecutivoMuestra.toString().length == 1) conse = "000" + consecutivo.consecutivoMuestra
-    else if (consecutivo.consecutivoMuestra.toString().length == 2) conse = "00" + consecutivo.consecutivoMuestra
-    else if (consecutivo.consecutivoMuestra.toString().length == 3) conse = "0" + consecutivo.consecutivoMuestra
-    else conse = consecutivo.consecutivoOferta
-    const d = new Date()
-
-    const codMuestra = conse + "-" + d.getFullYear()
-    const consecutivoMuestra = consecutivo.consecutivoMuestra + 1
-    const guardar = await Setup.findByIdAndUpdate(consecutivo._id, { consecutivoMuestra: consecutivoMuestra })
-
-    const { solicitante, numRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item } = req.body
-    const resultado = await Servicio.find({ cotizacion }).populate(
-      "items"
-    );
-    console.log(resultado);
-
     const muestras = new Muestra({ solicitante, codMuestra, numRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item })
 
     muestras.save()

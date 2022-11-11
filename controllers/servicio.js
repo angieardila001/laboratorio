@@ -102,6 +102,7 @@ const servicioPost = async (req, res) => { // añadir
     items.item3.costoitem = numero3
     items.costo += numero3
   }
+
   let sub = items.costo - descuento
   console.log("sub", sub);
  
