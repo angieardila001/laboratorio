@@ -27,6 +27,9 @@ router.get('/tipo/:tipo_ensayo',[
 GetTipo)  //buscar por tipo ensayo
 
 
+
+
+
 router.post('/post',[
       
     check('tipo_ensayo', 'El tipo ensayo es obligatorio!').not().isEmpty(),
