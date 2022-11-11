@@ -77,7 +77,7 @@ const usuarioPost = async (req, res) => { //añadir
 }
 const modificaDatos = async (req, res) => {
     const { id } = req.params;
-    const { _id, createdAt, estado, ...resto } = req.body;
+    const { _id, createdAt, estado,password, ...resto } = req.body;
     try {
         const articulo = await Usuario.findByIdAndUpdate(id, resto);
 
