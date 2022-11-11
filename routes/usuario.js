@@ -61,7 +61,7 @@ router.post('/post',[
 
     check('documento', 'El documento es obligatorio!').not().isEmpty(),
     check('documento', 'El documento debe maximo tener 25 caracteres').isLength({ max: 25}),
-
+    check('documento').custom( helpersUsuarios.existeDocumento ),
     
     check('funcionario', 'El funcionario debe tener 25 caracteres').isLength({ max: 25}),
 
@@ -81,8 +81,7 @@ router.post('/post',[
     check('email').custom( helpersUsuarios.existeEmail ),
     check('email','El correo debe de tener máximo 50 caracteres').isLength({ max: 50}),
 
-    check('password', 'Llene el campo de contraseña').not().isEmpty(),
-    check('password', 'Password no es válido').isLength({ min: 8}),
+   
 
     check('rol', 'Llene el campo de rol').not().isEmpty(),
     check('rol', 'Rol no es válido').isLength({ max: 25}),

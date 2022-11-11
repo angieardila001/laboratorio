@@ -12,7 +12,7 @@ const UsuarioSchema = new mongoose.Schema({
   telefonoCo: { type: String, minlength: 7, required: true },
   celular: { type: String, minlength: 7, required: true },
   email: { type: String, maxlength: 50, required: true, unique: true },
-  password: { type: String, minlength: 8 },
+  password: { type: String, minlength: 25 },
   rol: { type: String, maxlength: 25, required: true, default: "Natural" },
   estado: { type: Number, default: 1 }, //0 inactivo  1:activo   2:vacaciones
   resetToken:{type: String, default: ""},

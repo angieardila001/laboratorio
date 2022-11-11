@@ -88,7 +88,7 @@ const muestraPost = async (req, res) => { //añadir
     "items"
   );
   console.log(resultado);
-  try {
+
     const muestras = new Muestra({ solicitante, codMuestra, numRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item })
 
     muestras.save()
@@ -144,9 +144,7 @@ const muestraPost = async (req, res) => { //añadir
 
     orden.save();
     res.json({ orden })
-  } catch (error) {
-    return res.status(404).json({ msg: 'Hable con el WebMaster' })
-  }
+ 
   try {
     const email = await Usuario.findById(solicitante)
     await enviar.sendMail({

@@ -59,13 +59,18 @@ const GetRol = async (req, res) => {  //buscar por titulo
     }
 }
 const usuarioPost = async (req, res) => { //añadir
-    const { nombre, funcionario, documento, direccion, ciudad, contacto, telefonoCo, celular, email, rol, password } = req.body
-    try {
-        const usuario = new Usuario({ nombre, funcionario, documento, direccion, ciudad, telefonoCo, celular, contacto, email, rol, password })
+    const { nombre, funcionario, documento, direccion, ciudad, contacto, telefonoCo, celular, email, rol, password} = req.body
+    let pass = documento
+    try{
+        const usuario = new Usuario({ nombre, funcionario, documento, direccion, ciudad, telefonoCo, celular, contacto, email, rol, password:documento })
+        try{
         const salt = bcryptjs.genSaltSync(10)
-        usuario.password = bcryptjs.hashSync(password, salt)
+        usuario.password = bcryptjs.hashSync(pass, salt)
         usuario.save()
         res.json({ usuario })
+        } catch (error) {
+            return res.status(404).json({ msg: 'No se puedo guardar contraseña' })
+        }
     } catch (error) {
         return res.status(404).json({ msg: 'Hable con el WebMaster' })
     }

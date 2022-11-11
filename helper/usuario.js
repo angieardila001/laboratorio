@@ -21,6 +21,17 @@ const helpersUsuarios={
         
         
     },
+    existeDocumento:async(documento) => {
+        // return async (req, res, next) => { 
+            const existe = await Usuario.findOne({ documento});
+        
+                if (existe ) {
+                    //return res.status(401).json({ msg: `El email ya está registrado` });
+                    throw new Error(`El Numero de cedula ya está registrado`)
+                }
+        
+        
+    },
     
 
     
