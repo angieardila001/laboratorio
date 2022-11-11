@@ -37,8 +37,8 @@ const ServicioSchema = new mongoose.Schema({
     },
     observaciones: {type: String,maxlength:50,default: ""},
     subTotal: {type: Number,maxlength:30},
-    descuento: {type: Number,maxlength:30, required: true},///descuento sobre el subtotal
-    iva: {type: Number,required: true},    
+    descuento: {type: Number,maxlength:30},///descuento sobre el subtotal
+    iva: {type: Number},    
     total: {type: Number}, //falta relacionarlo con la otra tabla   
     estado: {type: Number,default: 1  }, //0 anulada   1:vigente
     createdAt: { type: Date,default: Date.now}

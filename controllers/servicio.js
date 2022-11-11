@@ -8,8 +8,8 @@ const ServicioGet = async (req, res) => { //listar todos
 }
 
 const idservicioGet = async (req, res) => { //buscar por id
-  const { id } = req.params
-  const cotizacion = await Servicio.findById({ id })
+  const { _id } = req.params
+  const cotizacion = await Servicio.findById({ _id })
   res.json({
     cotizacion
   })
@@ -104,9 +104,8 @@ const servicioPost = async (req, res) => { // añadir
   }
   let sub = items.costo - descuento
   console.log("sub", sub);
-  let iva = "0." + consecutivo.iva
-  console.log(iva);
-  let subtotal1 = (sub * iva) + sub
+ 
+  let subtotal1 = Math.round(sub + sub * (consecutivo.iva/100))
   console.log("ss", subtotal1);
 
   const servicio = new Servicio({ numCotizacion, fechaEmision, idcliente, idContacto, validezOferta, entregaResultados, idElaboradoPor, items, total: subtotal1, subTotal: items.costo, descuento, iva: consecutivo.iva, observaciones })
@@ -175,11 +174,10 @@ const servicioPut = async (req, res) => {  //modificar
   }
   let sub = items.costo - descuento
   console.log("sub", sub);
-  let iva = "0." + consecutivo.iva
-  console.log(iva);
-  let subtotal1 = (sub * iva) + sub
+  const consecutivo2 = await Setup.findOne()
+  let subtotal1 = Math.round(sub + sub * (consecutivo2.iva/100))
   console.log("ss", subtotal1);
-  const servicio = new Servicio({ numCotizacion: concaNueva, fechaEmision, idcliente, idContacto, validezOferta, entregaResultados, idElaboradoPor, items, total, subTotal, descuento, iva })
+  const servicio = new Servicio({ numCotizacion: concaNueva, fechaEmision, idcliente, idContacto, validezOferta, entregaResultados, idElaboradoPor, items, total:subtotal1, subTotal:items.costo, iva:consecutivo2.iva , descuento})
   servicio.save()
   res.json({ servicio })
 }
