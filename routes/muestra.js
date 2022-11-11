@@ -48,6 +48,8 @@ GetTipo)  //buscar por tipo de muestra
 
 
 
+
+
 router.post('/post',[
       
     check('solicitante', 'El solicitante es obligatorio!').not().isEmpty(),
