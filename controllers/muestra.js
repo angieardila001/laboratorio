@@ -83,13 +83,13 @@ const muestraPost = async (req, res) => { //añadir
   const consecutivoMuestra = consecutivo.consecutivoMuestra + 1
   const guardar = await Setup.findByIdAndUpdate(consecutivo._id, { consecutivoMuestra: consecutivoMuestra })
 
-  const { solicitante, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item } = req.body
+  const { solicitante, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item, observaciones } = req.body
   const resultado = await Servicio.find({ cotizacion }).populate(
     "items"
   );
   console.log(resultado);
 
-    const muestras = new Muestra({ solicitante, codMuestra, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item })
+    const muestras = new Muestra({ solicitante, codMuestra, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item, observaciones})
 
     muestras.save()
 

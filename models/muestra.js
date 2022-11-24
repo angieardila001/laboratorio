@@ -10,10 +10,11 @@ const MuestraSchema = new mongoose.Schema({
     procedimientoMuestreo: {type: String,maxlength:25,required: true,default:"????????????????"},//averiguar
     tipoMuestra: { type: mongoose.Schema.ObjectId,ref: "tipoMuestra",required: true},
     matrizMuestra: {type: String,maxlength:25,required: true,default:"Panela" },//Panela
-    fechaRecoleccion: {type: Date,required: true },///UTC
+    fechaRecoleccion: {type: String,required: true },///UTC
     cotizacion: {type: mongoose.Schema.ObjectId, ref: "Servicio",required: true},
     item: {type: String, default:"Item1",required: true},
     estado: { type: Number,default: 1},
+    observaciones:{ type: String,default: "N.A"},
     createdAt: { type: Date,default: Date.now}, 
 })
 
