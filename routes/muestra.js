@@ -57,7 +57,7 @@ router.post('/post',[
     check('munRecoleccion').custom( helpersCiudades.existeCiudadById),
 
     check('direccionTomaMuestra', 'La  dirección de la toma muestra es obligatoria!').not().isEmpty(),
-    check('direccionTomaMuestra').custom( helpersCiudades.existeCiudadById),
+ 
 
     check('lugarTomaMuestra', 'El lugar toma de la muestra es obligatorio!').not().isEmpty(),
     check('lugarTomaMuestra', 'El lugar toma de la muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
@@ -72,7 +72,7 @@ router.post('/post',[
     check('tipoMuestra').custom( tipo.existetipoMuestraById),
 
     check('fechaRecoleccion', 'la fecha de recolección es obligatoria!').not().isEmpty(),
-    check('fechaRecoleccion', 'la fecha de recolección debe tener máximo 30 caracteres').isLength({ max: 30}),
+   
 
     check('matrizMuestra', 'la matriz muestra es obligatoria!').not().isEmpty(),
     check('matrizMuestra', 'la matriz muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
