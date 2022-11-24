@@ -59,6 +59,7 @@ router.post('/post',[
     check('direccionTomaMuestra', 'La  dirección de la toma muestra es obligatoria!').not().isEmpty(),
  
 
+    
     check('lugarTomaMuestra', 'El lugar toma de la muestra es obligatorio!').not().isEmpty(),
     check('lugarTomaMuestra', 'El lugar toma de la muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
 
