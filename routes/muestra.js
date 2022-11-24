@@ -49,7 +49,7 @@ GetTipo)  //buscar por tipo de muestra
 
 
 router.post('/post',[
-      
+    validarJWT,
     check('solicitante', 'El solicitante es obligatorio!').not().isEmpty(),
     check('solicitante').custom( usuario. existeUsuarioById ),
     
