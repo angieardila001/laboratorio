@@ -53,8 +53,8 @@ router.post('/post',[
     check('solicitante', 'El solicitante es obligatorio!').not().isEmpty(),
     check('solicitante').custom( usuario. existeUsuarioById ),
     
-    check('numRecoleccion', 'El número recolección  es obligatorio!').not().isEmpty(),
-    check('numRecoleccion').custom( helpersCiudades.existeCiudadById),
+    check('munRecoleccion', 'El número recolección  es obligatorio!').not().isEmpty(),
+    check('munRecoleccion').custom( helpersCiudades.existeCiudadById),
 
     check('direccionTomaMuestra', 'La  dirección de la toma muestra es obligatoria!').not().isEmpty(),
     check('direccionTomaMuestra').custom( helpersCiudades.existeCiudadById),
@@ -73,6 +73,9 @@ router.post('/post',[
 
     check('fechaRecoleccion', 'la fecha de recolección es obligatoria!').not().isEmpty(),
     check('fechaRecoleccion', 'la fecha de recolección debe tener máximo 30 caracteres').isLength({ max: 30}),
+
+    check('matrizMuestra', 'la matriz muestra es obligatoria!').not().isEmpty(),
+    check('matrizMuestra', 'la matriz muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
 
     check('cotizacion', 'La cotización es obligatoria!').not().isEmpty(),
     check('cotizacion').custom( servicio.existeServicioById),
