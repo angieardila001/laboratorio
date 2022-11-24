@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const MuestraSchema = new mongoose.Schema({
     solicitante: {type: mongoose.Schema.ObjectId, ref: "Usuario",required: true},
     codMuestra: { type: String,required: true},///  0001-2022
-    numRecoleccion: { type: mongoose.Schema.ObjectId, ref: "Ciudad", required: true},
+    munRecoleccion: { type: mongoose.Schema.ObjectId, ref: "Ciudad", required: true},
     direccionTomaMuestra: {type: String,maxlength:25,required: true},
     lugarTomaMuestra: {type: String,maxlength:25,required: true},
     muestraRecolectadaPor: {type: String,maxlength:25,required: true},
