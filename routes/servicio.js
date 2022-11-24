@@ -28,6 +28,10 @@ itemCotiGet)  //buscar por item
 
  
 
+
+
+
+
 router.get('/usuario/:id',[
     validarJWT,
     check('id', 'Ingrese usuario que sea correcto').not().isEmpty(),
