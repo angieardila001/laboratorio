@@ -92,6 +92,8 @@ router.put('/modificar/:id',[
 ],modificaPut)
 
 
+
+
 router.put('/activar/:id',[
     validarJWT,
     check('id','Ingresa la muestra activar').not().isEmpty(),
