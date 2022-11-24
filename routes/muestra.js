@@ -75,7 +75,7 @@ router.post('/post',[
     check('fechaRecoleccion', 'la fecha de recolección debe tener máximo 30 caracteres').isLength({ max: 30}),
 
     check('matrizMuestra', 'la matriz muestra es obligatoria!').not().isEmpty(),
-    check('matrizMuestra', 'la matriz muestra debe tener máximo 30 caracteres').isLength({ max: 30}),
+    check('matrizMuestra', 'la matriz muestra debe tener máximo 25 caracteres').isLength({ max: 25}),
 
     check('cotizacion', 'La cotización es obligatoria!').not().isEmpty(),
     check('cotizacion').custom( servicio.existeServicioById),
