@@ -8,7 +8,7 @@ import Servicio from "../models/servicio.js"
 import enviar from "../database/mailer.js"
 const muestraGet = async (req, res) => { //listar todos
   try {
-    const muestras = await Muestra.find().populate({ path: "solicitante", populate: { path: "ciudad" } }).populate({ path: "numRecoleccion" }).populate({ path: "tipoMuestra" })
+    const muestras = await Muestra.find().populate({ path: "solicitante", populate: { path: "ciudad" } }).populate({ path: "munRecoleccion" }).populate({ path: "tipoMuestra" })
 
     res.json({
       muestras

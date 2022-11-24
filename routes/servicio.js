@@ -56,19 +56,11 @@ router.post('/post',[
 
     check('idcliente').custom( helpersUsuarios.existeUsuarioById),
 
-
-
-
-    
-    
-
     check('entregaResultados', 'El entrega de resultados es obligatorio!').not().isEmpty(),
 
     check('validezOferta', 'La validez oferta es obligatoria!').not().isEmpty(),
     check('validezOferta', 'La validez oferta debe tener máximo 30 caracteres').isLength({ max: 30}),
-
     
-
     check('idElaboradoPor', 'Ingrese elaborado por').not().isEmpty(),
     check('idElaboradoPor').custom( helpersUsuarios.existeUsuarioById),
 
