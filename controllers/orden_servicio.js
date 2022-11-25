@@ -15,6 +15,9 @@ const ServicioGet = async (req, res) => { //listar todos
 }
 
 
+
+
+
 const estadoMuestra = async (req, res) => {
   const { estadoMuestra } = req.params
   try {
