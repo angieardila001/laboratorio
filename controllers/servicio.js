@@ -1,7 +1,12 @@
 import Servicio from "../models/servicio.js"
 import Setup from "../models/setup.js"
 const ServicioGet = async (req, res) => { //listar todos
-  const servicio = await Servicio.find().populate({ path: "idcliente" }).populate({ path: "idElaboradoPor" }).populate({ path: "items.item1.itemsEnsayo.ensayo"})
+  const servicio = await Servicio.find().populate({ path: "idcliente" }).populate({ path: "idElaboradoPor" })
+  .populate({ path: "items.item1.itemsEnsayo.ensayo"})
+  .populate({ path: "items.item2.itemsEnsayo.ensayo"})
+  .populate({ path: "items.item3.itemsEnsayo.ensayo"})
+  .populate({ path: "items.item1.itemsEnsayo.ensayo.responsables", populate: { path: "titular" } })
+  .populate({ path: "items.item1.itemsEnsayo.ensayo.responsables", populate: { path: "suplente" } })
   res.json({
   servicio
   })
