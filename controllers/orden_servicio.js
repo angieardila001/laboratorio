@@ -5,7 +5,7 @@ const ServicioGet = async (req, res) => { //listar todos
     const servicio = await Servicio.find().populate({
       path: "itemsorden.idensayo",
       populate: { path: "responsables.titular" }
-    });
+    }).populate({ path: "idMuestra" });
     res.json({
       servicio
     })
