@@ -1,9 +1,9 @@
 import Servicio from "../models/servicio.js"
 import Setup from "../models/setup.js"
 const ServicioGet = async (req, res) => { //listar todos
-  const servicio = await Servicio.find()
+  const servicio = await Servicio.find().populate({ path: "idcliente" }).populate({ path: "idElaboradoPor" }).populate({ path: "items.item1.itemsEnsayo.ensayo"})
   res.json({
-    servicio
+  servicio
   })
 }
 
