@@ -83,26 +83,30 @@ const muestraPost = async (req, res) => { //añadir
   const consecutivoMuestra = consecutivo.consecutivoMuestra + 1
   const guardar = await Setup.findByIdAndUpdate(consecutivo._id, { consecutivoMuestra: consecutivoMuestra })
 
-  const { solicitante, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item, observaciones } = req.body
+  const { solicitante, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item,observaciones} = req.body
   const resultado = await Servicio.find({ cotizacion }).populate(
     "items"
   );
-  console.log(resultado);
+  //console.log("resultado",resultado);
 
-    const muestras = new Muestra({ solicitante, codMuestra, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item, observaciones})
+    const muestras = new Muestra({ solicitante, codMuestra, munRecoleccion, direccionTomaMuestra, lugarTomaMuestra, muestraRecolectadaPor, procedimientoMuestreo, tipoMuestra, matrizMuestra, fechaRecoleccion, cotizacion, item,observaciones})
 
     muestras.save()
 
 
     const cotizacion1 = await Cotizacion.findById(cotizacion);
+    console.log("cotizacion",cotizacion1)
     let cotilla = "";
     //item??
     if (item == "Item1") {
       cotilla = cotizacion1.items.item1.itemsEnsayo;
+      console.log("cotilla1",cotilla)
     } else if (item == "Item2") {
       cotilla = cotizacion1.items.item2.itemsEnsayo;
+      console.log("cotilla2",cotilla)
     } else {
       cotilla = cotizacion1.items.item3.itemsEnsayo;
+      console.log("cotilla3",cotilla)
     }
 
     let supervisores = "";
@@ -136,6 +140,7 @@ const muestraPost = async (req, res) => { //añadir
       const supervisor = await Usuario.findOne({ rol: "supervisor" });
       if (supervisor) {
         itemOrden.supervisor = supervisor._id;
+        console.log("supervisor",itemOrden.supervisor)
       }
       itemsOrden.push(itemOrden);
     }
