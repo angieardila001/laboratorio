@@ -5,7 +5,7 @@ const ServicioGet = async (req, res) => { //listar todos
   .populate({ path: "items.item1.itemsEnsayo.ensayo"})
   .populate({ path: "items.item2.itemsEnsayo.ensayo"})
   .populate({ path: "items.item3.itemsEnsayo.ensayo"})
-  .populate({ path: "items.item1.itemsEnsayo.ensayo.responsables", populate: { path: "titular" } })
+  .populate({ path: "items.item1.itemsEnsayo.ensayo.responsables.titular", populate: { path: "titular" } })
   .populate({ path: "items.item1.itemsEnsayo.ensayo.responsables", populate: { path: "suplente" } })
   res.json({
   servicio
