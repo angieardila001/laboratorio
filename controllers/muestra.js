@@ -69,6 +69,10 @@ const GetTipo = async (req, res) => {  //buscar por tipo
   }
 }
 
+
+
+
+
 const muestraPost = async (req, res) => { //añadir
 
   const consecutivo = await Setup.findOne()
