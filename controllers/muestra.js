@@ -20,7 +20,7 @@ const muestraGet = async (req, res) => { //listar todos
 const idmuestraGet = async (req, res) => { //listar por id
   const { _id } = req.params
   try {
-    const muestras = await Muestra.findById(_id)
+    const muestras = await Muestra.findById(_id).populate({ path: "solicitante", populate: { path: "ciudad" } }).populate({ path: "munRecoleccion" }).populate({ path: "tipoMuestra" }).populate({ path: "cotizacion" })
     res.json({
       muestras
     })
